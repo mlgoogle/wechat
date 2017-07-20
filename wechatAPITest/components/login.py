@@ -1,13 +1,15 @@
+#!/usr/bin/env python
+# coding=utf-8
+
 import os, sys, time, re, io
 import threading
 import json, xml.dom.minidom
 import copy, pickle, random
 import traceback, logging
+import config, utils
 
 import requests
 from pyqrcode import QRCode
-
-import config, utils
 from returnvalues import ReturnValue
 from storage.templates import wrap_user_dict
 from contact import update_local_chatrooms, update_local_friends
@@ -74,6 +76,7 @@ def login(self, enableCmdQR=False, picDir=None, qrCallback=None,
         if os.path.exists(picDir or config.DEFAULT_QR):
             os.remove(picDir or config.DEFAULT_QR)
         logger.info('Login successfully as %s' % self.storageClass.nickName)
+
     self.start_receiving(exitCallback)
     self.isLogging = False
 

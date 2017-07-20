@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-import components
 from core import Core
 
 cr = Core()
@@ -19,7 +18,13 @@ def receiveGrope(msg):
     name = group['UserName']
     cr.send('%s : %s' % ( msg['User']['NickName'], msg['Text']), toUserName=name)
 
-cr.auto_login(hotReload=True)
+def sendMsgToGroup(msg):
+    group = cr.search_chatrooms(name='Happy')[0]
+    name = group['UserName']
+    cr.send('%s' % msg, toUserName=name)
+cr.auto_login()
+sendMsgToGroup('robot has been login.')
+
 cr.run()
 
 
