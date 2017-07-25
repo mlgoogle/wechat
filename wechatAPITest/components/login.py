@@ -111,6 +111,7 @@ def get_QR(self, uuid=None, enableCmdQR=False, picDir=None, qrCallback=None):
     qrStorage = io.BytesIO()
     qrCode = QRCode('https://login.weixin.qq.com/l/' + uuid)
     qrCode.png(qrStorage, scale=10)
+    logger.info('https://login.weixin.qq.com/l/' + uuid)
     if hasattr(qrCallback, '__call__'):
         qrCallback(uuid=uuid, status='0', qrcode=qrStorage.getvalue())
     else:

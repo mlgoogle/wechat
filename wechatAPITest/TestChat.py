@@ -17,11 +17,13 @@ def receiveGrope(msg):
 
 
 def sendMsgToGroup(msg):
-    group = cr.search_chatrooms(name='Happy')[0]
-    name = group['UserName']
-    cr.send('%s' % msg, toUserName=name)
-cr.auto_login(enableCmdQR=True)
+    # group = cr.search_chatrooms(name='Happy')[0]
+    # name = group['UserName']
+    # cr.send('%s' % msg, toUserName=name)
+    pass
 
+
+cr.auto_login(enableCmdQR=True)
 
 sendMsgToGroup('robot has been login.')
 cr.run()
