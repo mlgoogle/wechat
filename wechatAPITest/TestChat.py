@@ -14,8 +14,7 @@ def receiveMsg(msg):
 @cr.msg_register('Text', isGroupChat=True)
 def receiveGrope(msg):
     if msg['User']['NickName'] == 'Hero':
-        if msg['Text'] == 'online':
-            sendMsgToGroup('%s : %s' % ( msg['User']['NickName'], msg['Text']))
+        sendMsgToGroup('%s : %s' % ( msg['User']['NickName'], msg['Text']))
 
 
 def sendMsgToGroup(msg):
