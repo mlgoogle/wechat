@@ -8,25 +8,25 @@ cr = Core()
 
 @cr.msg_register('Text')
 def receiveMsg(msg):
-
-    sendMsgToGroup('%s : %s' % ( msg['User']['NickName'], msg['Text']))
+    if msg['Text'] == 'online':
+        sendMsgToGroup('%s : %s' % ( msg['User']['NickName'], msg['Text']))
 
 @cr.msg_register('Text', isGroupChat=True)
 def receiveGrope(msg):
-    if msg['Text'] == 'online':
-        sendMsgToGroup('%s : %s' % ( msg['User']['NickName'], msg['Text']))
+    if msg['User']['NickName'] == 'Hero':
+        if msg['Text'] == 'online':
+            sendMsgToGroup('%s : %s' % ( msg['User']['NickName'], msg['Text']))
 
 
 def sendMsgToGroup(msg):
     group = cr.search_chatrooms(name='Hero')[0]
     name = group['UserName']
     cr.send('%s' % msg, toUserName=name)
-    pass
 
 
 cr.auto_login(enableCmdQR=True)
 
-sendMsgToGroup('robot has been login.')
+# sendMsgToGroup('robot has been login.')
 cr.run()
 
 

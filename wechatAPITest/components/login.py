@@ -109,18 +109,21 @@ def get_QR(self, uuid=None, enableCmdQR=False, picDir=None, qrCallback=None):
     uuid = uuid or self.uuid
     picDir = picDir or config.DEFAULT_QR
     qrStorage = io.BytesIO()
-    qrCode = QRCode('https://login.weixin.qq.com/l/' + uuid)
-    qrCode.png(qrStorage, scale=10)
+    # qrCode = QRCode('https://login.weixin.qq.com/l/' + uuid)
+    # qrCode.png(qrStorage, scale=10)
     logger.info('https://login.weixin.qq.com/l/' + uuid)
     if hasattr(qrCallback, '__call__'):
-        qrCallback(uuid=uuid, status='0', qrcode=qrStorage.getvalue())
+        pass
+        # qrCallback(uuid=uuid, status='0', qrcode=qrStorage.getvalue())
     else:
         if enableCmdQR:
-            utils.print_cmd_qr(qrCode.text(1), enableCmdQR=enableCmdQR)
+            pass
+            # utils.print_cmd_qr(qrCode.text(1), enableCmdQR=enableCmdQR)
         else:
             with open(picDir, 'wb') as f:
-                f.write(qrStorage.getvalue())
-            utils.print_qr(picDir)
+                pass
+                # f.write(qrStorage.getvalue())
+            # utils.print_qr(picDir)
     return qrStorage
 
 def check_login(self, uuid=None):
