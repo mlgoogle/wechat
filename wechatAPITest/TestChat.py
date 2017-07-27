@@ -9,7 +9,7 @@ import socket
 cr = Core()
 
 s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-s.connect('~/wechat')
+s.connect('/wechat.d')
 
 @cr.msg_register('Text')
 def receiveMsg(msg):
