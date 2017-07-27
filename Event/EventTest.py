@@ -6,6 +6,7 @@ def initLibEvent():
    return libevent.Base()
 
 def creatEvent():
+
     base = initLibEvent()
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     sock.bind('wechat')
@@ -19,4 +20,3 @@ def creatEvent():
 
 def recall(ev, fd, what, event):
     print ev, index, what, event
-
