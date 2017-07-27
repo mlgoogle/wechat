@@ -11,10 +11,11 @@ cr = Core()
 
 senCon, recCon = Pipe()
 
-EventTest.creatEvent(recCon)
+def initServer():
+    EventTest.creatEvent(recCon)
 # s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
 # s.connect('/wechat.d')
-
+p = Process(target=initServer(), args=(recCon,))
 @cr.msg_register('Text')
 def receiveMsg(msg):
     if msg['Text'] == 'online':
