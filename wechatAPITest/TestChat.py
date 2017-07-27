@@ -3,12 +3,13 @@
 #encoding=utf-8
 
 from core import Core
-from Event import EventTest
+#from Event import EventTest
+#import EventTest
 import socket
 cr = Core()
 
-s = socket.socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-s.connect('wechat')
+s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+s.connect('~/wechat')
 
 @cr.msg_register('Text')
 def receiveMsg(msg):

@@ -1,5 +1,6 @@
 import libevent
 import socket
+import os
 
 def initLibEvent():
 
@@ -9,7 +10,9 @@ def creatEvent():
 
     base = initLibEvent()
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    sock.bind('wechat')
+    if os.path.exists('./wechat')
+       os.unlink('./wechat')
+    sock.bind('./wechat')
     sock.listen(5)
     connection, adress = sock.accept()
     connection.setblocking(False)
