@@ -241,7 +241,6 @@ def show_mobile_login(self):
 
 def start_receiving(self, exitCallback=None, getReceivingFnOnly=False):
     self.alive = True
-    print os.getpid
     def maintain_loop():
         retryCount = 0
         while self.alive:

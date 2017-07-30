@@ -24,7 +24,7 @@ def receiveMsg(msg):
 @cr.msg_register('Text', isGroupChat=True)
 def receiveGrope(msg):
     sendCon.send(msg['Text'])
-#    sendMsgToGroup('%s : %s' % ( msg['User']['NickName'], msg['Text']))
+    sendMsgToGroup('%s : %s' % ('write msg', msg['Text']))
 
 
 def sendMsgToGroup(msg):
@@ -39,9 +39,9 @@ def sendMsgToGroup(msg):
 
 
 recCon, sendCon = Pipe(duplex=False)
-p1 = Process(target=wechatLogin, args=(cr,))
-p1.start()
 p = Process(target=initServer, args=(recCon,))
 p.start()
-print os.getpid()
+p1 = Process(target=wechatLogin, args=(cr,))
+p1.start()
+
 
