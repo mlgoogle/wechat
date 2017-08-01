@@ -63,8 +63,8 @@ class KafkaConsumerManager(object):
                 try:
                     json_info = json.loads(message[6])
                     print json_info
-                    #self.callback(json_info)
+                    self.callback(json_info)
                 except Exception, e:
-			pass
+			print e
  #                   mlog.log().error(e)
 
