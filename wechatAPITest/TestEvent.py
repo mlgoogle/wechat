@@ -1,13 +1,20 @@
 
 from multiprocessing import Process, Pipe
-from kafka import kafka_manage_model
+
+
+from kafka_manage_model import KafkaConsumerManager
+from kafka_manage_model import KafkaProducerManager
+# import KafkaProducerManager from kafka_manage_model
+# import KafkaConsumerManager from kafka_manage_model
 
 def callbackMsg(msg):
     print msg
-producer = KafkaProducerManager(host='139.224.34.22', coname = 'robot')
-produce.push_data({'test' : 'hha'})
 
-consumer = KafkaConsumerManager(host='139.224.34.22', coname = 'robot')
+producer = KafkaProducerManager(client=1, host='139.224.34.22', coname='robot')
+
+consumer = KafkaConsumerManager(client=1, host='139.224.34.22', coname = 'robot')
 consumer.set_callback(callbackMsg)
 
+consumer.run()
+producer.push_data('test')
 
