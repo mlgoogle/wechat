@@ -57,14 +57,16 @@ class KafkaConsumerManager(object):
         连接取数据
         """
         while True:
-            consumer = KafkaConsumer(bootstrap_servers=self.host)
+            consumer =  KafkaConsumer(bootstrap_servers=self.host)
             consumer.subscribe([self.coname])
+
             for message in consumer:
                 try:
+                    print message
                     json_info = json.loads(message[6])
                     print json_info
-                    #self.callback(json_info)
+                    self.callback(message[6])
                 except Exception, e:
-			pass
+                    print e
  #                   mlog.log().error(e)
 
