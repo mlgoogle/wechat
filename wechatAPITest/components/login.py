@@ -172,6 +172,7 @@ def process_login_info(core, loginContent):
         core.loginInfo['fileUrl'] = core.loginInfo['syncUrl'] = core.loginInfo['url']
     core.loginInfo['deviceid'] = 'e' + repr(random.random())[2:17]
     core.loginInfo['BaseRequest'] = {}
+    print r.text
     for node in xml.dom.minidom.parseString(r.text).documentElement.childNodes:
         if node.nodeName == 'skey':
             core.loginInfo['skey'] = core.loginInfo['BaseRequest']['Skey'] = node.childNodes[0].data

@@ -5,7 +5,7 @@ from multiprocessing import Process, Pipe
 import os
 from core import Core
 import EventTest
-
+import jieba
 cr = Core()
 recCon, sendCon = Pipe(duplex=False)
 def wechatLogin(cr):
@@ -24,7 +24,8 @@ def receiveMsg(msg):
 @cr.msg_register('Text', isGroupChat=True)
 def receiveGrope(msg):
     sendCon.send(msg['Text'])
-    sendMsgToGroup('%s : %s' % ('write msg', msg['Text']))
+    seg_list = jieba.cut(msg['Text'], cut_all = False)
+    sendMsgToGroup('%s : %s' % ('write msg', " ".join(seg_list)))
 
 
 def sendMsgToGroup(msg):
@@ -32,13 +33,7 @@ def sendMsgToGroup(msg):
     name = group['UserName']
     cr.send(msg, toUserName=name)
 
-#cr.auto_login(enableCmdQR=True)
 
-
-#cr.run()
-
-
-recCon, sendCon = Pipe(duplex=False)
 p = Process(target=initServer, args=(recCon,))
 p.start()
 p1 = Process(target=wechatLogin, args=(cr,))
