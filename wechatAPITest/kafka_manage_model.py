@@ -7,7 +7,7 @@ Created on 2016年7月28日
 import json
 #from tools.base.mlog import mlog
 from kafka import KafkaConsumer,KafkaProducer
-
+from collections import Iterable
 
 class KafkaProducerManager(object):
 
@@ -15,16 +15,18 @@ class KafkaProducerManager(object):
         self.client = client
         self.host = host
         self.coname = coname
+	print 'connect write '
         self.producer = KafkaProducer(bootstrap_servers=self.host)
 
     def __del__(self):
         self.producer.close()
 
-
     def push_data(self, parmas_message):
+	print 'write message'
         producer = self.producer
         producer.send(self.coname, parmas_message.encode('utf-8'))
         producer.flush()
+	print 'write done'
 
 
 
@@ -57,14 +59,16 @@ class KafkaConsumerManager(object):
         连接取数据
         """
         while True:
-            consumer = KafkaConsumer(bootstrap_servers=self.host)
+	    print 'read connect', self.host, self.coname
+            consumer =  KafkaConsumer(bootstrap_servers=self.host)
             consumer.subscribe([self.coname])
+	    print isinstance(consumer, Iterable)
             for message in consumer:
                 try:
-                    json_info = json.loads(message[6])
-                    print json_info
-                    self.callback(json_info)
+                    print message
+           #         json_info = json.loads(message[6])
+                    self.callback(message[6])
                 except Exception, e:
-			print e
+                    print e
  #                   mlog.log().error(e)
 
