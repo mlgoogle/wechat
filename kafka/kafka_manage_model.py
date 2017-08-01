@@ -5,7 +5,7 @@ Created on 2016年7月28日
 @author: kerry
 """
 import json
-from tools.base.mlog import mlog
+#from tools.base.mlog import mlog
 from kafka import KafkaConsumer,KafkaProducer
 
 
@@ -47,9 +47,9 @@ class KafkaConsumerManager(object):
     def set_callback(self, callback):
         self.callback = callback
 
-    def process_data(self, data):
-        name = data['key_name'] + data['pos_name'] + '.txt'
-        ftp_url = '~/text_storage/' + data['key_name'] + '/' + data['pos_name']
+#    def process_data(self, data):
+#        name = data['key_name'] + data['pos_name'] + '.txt'
+#        ftp_url = '~/text_storage/' + data['key_name'] + '/' + data['pos_name']
         # ftp_manager_t.download(str(name), (ftp_url))
 
     def run(self):
@@ -65,5 +65,6 @@ class KafkaConsumerManager(object):
                     print json_info
                     #self.callback(json_info)
                 except Exception, e:
-                    mlog.log().error(e)
+			pass
+ #                   mlog.log().error(e)
 
