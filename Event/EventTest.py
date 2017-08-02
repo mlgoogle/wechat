@@ -1,25 +1,24 @@
 import libevent
 import socket
 import os
+from multiprocessing import Process, Pipe
+import logging
+#import TestChat
+
+logger = logging.getLogger('wechatRobot')
 
 def initLibEvent():
-
    return libevent.Base()
 
-def creatEvent():
-
+def creatEvent(con):
     base = initLibEvent()
-    sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    if os.path.exists('./wechat')
-       os.unlink('./wechat')
-    sock.bind('./wechat')
-    sock.listen(5)
-    connection, adress = sock.accept()
-    connection.setblocking(False)
-
-    ev = libevent.Event(base, connection.fileno(), libevent.EV_READ|libevent.EV_PERSIST, recall, connection)
-    ev.add(10)
+    ev = libevent.Event(base, 1, libevent.EV_READ|libevent.EV_PERSIST, recall, con)
+    ev.add(0.1)
     base.loop()
 
 def recall(ev, fd, what, event):
-    print ev, index, what, event
+    e =  event.recv()
+    print e
+#	TestChat.sendMsgToGroup(e)
+    if libevent.EV_READ:	
+	print ev, fd, what, event
