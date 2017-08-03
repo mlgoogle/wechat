@@ -8,7 +8,7 @@ import json
 #from tools.base.mlog import mlog
 from kafka import KafkaConsumer,KafkaProducer
 from collections import Iterable
-
+from Robot.event import event_manager
 class KafkaProducerManager(object):
 
     def __init__(self, client, host, coname):
@@ -49,10 +49,7 @@ class KafkaConsumerManager(object):
     def set_callback(self, callback):
         self.callback = callback
 
-#    def process_data(self, data):
-#        name = data['key_name'] + data['pos_name'] + '.txt'
-#        ftp_url = '~/text_storage/' + data['key_name'] + '/' + data['pos_name']
-        # ftp_manager_t.download(str(name), (ftp_url))
+
 
     def run(self):
         """

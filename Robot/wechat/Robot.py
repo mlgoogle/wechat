@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 #encoding=utf-8
 from multiprocessing import Process
-import jieba
 from core import Core
+from Robot.event import event_manager
 
 cr = Core()
 def wechatLogin(cr):
@@ -17,9 +17,8 @@ def receiveMsg(msg):
 
 @cr.msg_register('Text', isGroupChat=True)
 def receiveGrope(msg):
-    seg_list = jieba.cut(msg['Text'], cut_all = False)
-    sendMsgToGroup('%s : %s' % ('write msg', " ".join(seg_list)))
-
+    event_manager.sendCon.send(msg)
+    pass
 
 def sendMsgToGroup(msg):
     group = cr.search_chatrooms(name='Hero')[0]
@@ -29,5 +28,6 @@ def sendMsgToGroup(msg):
 
 p1 = Process(target=wechatLogin, args=(cr,))
 p1.start()
+event_manager.setConfig()
 
 
