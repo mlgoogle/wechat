@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 
 import config
 # from . import config
-=======
-import config
-#from . import config
->>>>>>> origin/master
+
 import libevent
 from multiprocessing import Process, Pipe, Pool
 from kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
@@ -23,8 +19,6 @@ def setConfig():
     p1 = Process(target=consumer.run(), args=(1,))
     p1.start()
     creatEvent(recCon)
-
-
 
 def callbackMsg(msg):
     pool.apply_async(deal_with_event(e=msg, type=1), (msg,))
@@ -48,6 +42,7 @@ def recall(ev, fd, what, event):
     pool.apply_async(deal_with_event(e), (e,))
 
 
+
 def deal_with_event(e, type=0):
     if type == 0:
         dealwith_wechatMsg(e)
@@ -55,9 +50,13 @@ def deal_with_event(e, type=0):
         dealwith_kafkaMsg(e)
 
 def dealwith_wechatMsg(msg):
-
+    sendMsgToGroup(msg, userName='111')
     pass
 
 def dealwith_kafkaMsg(msg):
-
+    sendMsgToGroup(msg, userName='111')
     pass
+
+def sendMsgToGroup(msg, userName):
+
+    raise NotImplementedError()
