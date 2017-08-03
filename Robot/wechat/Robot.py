@@ -26,8 +26,8 @@ def sendMsgToGroup(msg):
     cr.send(msg, toUserName=name)
 
 
+event_manager.setConfig()
 p1 = Process(target=wechatLogin, args=(cr,))
 p1.start()
-event_manager.setConfig()
 
 
