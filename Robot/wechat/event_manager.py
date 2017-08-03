@@ -14,12 +14,12 @@ pool = Pool(processes=5)
 def setConfig():
     p = Process(target=creatEvent, args=(recCon,))
     p.start()
+    p1 = Process(target=setkafka(), args=(1,))
+    p1.start()
+def setkafka():
     consumer = KafkaConsumerManager(client=1, host=config.KAFKAHOST, coname=config.KAFKATOPIC)
     consumer.set_callback(callbackMsg)
-    p1 = Process(target=consumer.run(), args=(1,))
-    p1.start()
-    creatEvent(recCon)
-
+    consumer.run()
 def callbackMsg(msg):
     pool.apply_async(deal_with_event(e=msg, type=1), (msg,))
 
