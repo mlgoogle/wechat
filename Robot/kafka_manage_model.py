@@ -4,11 +4,12 @@ Created on 2016年7月28日
 
 @author: kerry
 """
-import json
 #from tools.base.mlog import mlog
-from kafka import KafkaConsumer,KafkaProducer
 from collections import Iterable
-from Robot.event import event_manager
+
+from kafka import KafkaConsumer,KafkaProducer
+
+
 class KafkaProducerManager(object):
 
     def __init__(self, client, host, coname):

@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfa2e35f-4d98-47c6-917b-9d895b619636" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Robot/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Robot/event/RobotEvent.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Robot/event/event_manager.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Robot/robot_event/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Robot/wechat/Robot.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Robot/event/EventTest.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Robot/event/TestEvent.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Robot/wechat/TestChat.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Robot/event/__init__.py" afterPath="$PROJECT_DIR$/Robot/event/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Robot/kafka/kafka_manage_model.py" afterPath="$PROJECT_DIR$/Robot/kafka/kafka_manage_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Robot/wechat/config.py" afterPath="$PROJECT_DIR$/Robot/wechat/config.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Robot/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Robot/event/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Robot/kafka/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Robot/robot_event/__init__.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Robot/event/RobotEvent.py" afterPath="$PROJECT_DIR$/Robot/RobotEvent.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Robot/event/event_manager.py" afterPath="$PROJECT_DIR$/Robot/event_manager.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Robot/kafka/kafkaTest.py" afterPath="$PROJECT_DIR$/Robot/kafkaTest.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Robot/kafka/kafka_manage_model.py" afterPath="$PROJECT_DIR$/Robot/kafka_manage_model.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Robot/wechat/Robot.py" afterPath="$PROJECT_DIR$/Robot/Robot.py" />
     </list>
     <ignored path="wechat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,6 +24,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/wechat$TestChat__1_.coverage" NAME="TestChat (1) Coverage Results" MODIFIED="1500970186401" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/wechatAPITest" />
+    <SUITE FILE_PATH="coverage/wechat$Robot.coverage" NAME="Robot Coverage Results" MODIFIED="1501747228761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Robot/wechat" />
     <SUITE FILE_PATH="coverage/wechat$TestEvent.coverage" NAME="TestEvent Coverage Results" MODIFIED="1501577298454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/wechatAPITest" />
     <SUITE FILE_PATH="coverage/wechat$Testjieba.coverage" NAME="Testjieba Coverage Results" MODIFIED="1501677117151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Robot/event" />
     <SUITE FILE_PATH="coverage/wechat$TestChat.coverage" NAME="TestChat Coverage Results" MODIFIED="1500535285100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -40,11 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="event_manager.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Robot/event/event_manager.py">
+      <file leaf-file-name="event_manager.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Robot/event_manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="-35">
+              <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
               <folding>
                 <element signature="e#1#16#0" expanded="true" />
               </folding>
@@ -52,50 +50,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Robot/wechat/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="19" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="kafka_manage_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Robot/kafka/kafka_manage_model.py">
+        <entry file="file://$PROJECT_DIR$/Robot/kafka_manage_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
-              <folding>
-                <element signature="e#69#80#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Robot/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RobotEvent.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Robot/event/RobotEvent.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+            <state relative-caret-position="135">
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="kafkaTest.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Robot/kafka/kafkaTest.py">
+        <entry file="file://$PROJECT_DIR$/Robot/kafkaTest.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
               <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="10" selection-end-column="14" />
@@ -104,11 +70,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Robot.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Robot/wechat/Robot.py">
+      <file leaf-file-name="RobotEvent.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Robot/RobotEvent.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="75">
+              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Robot.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Robot/Robot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
               <folding>
                 <element signature="e#58#93#0" expanded="true" />
               </folding>
@@ -117,7 +93,19 @@
         </entry>
       </file>
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Robot/kafka/__init__.py">
+        <entry file="file://$PROJECT_DIR$/Robot/wechat/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="itchat.pkl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Robot/wechat/itchat.pkl">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -126,8 +114,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Robot/robot_event/__init__.py">
+      <file leaf-file-name="returnvalues.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Robot/wechat/returnvalues.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-620">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Robot/wechat/utils.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -173,6 +171,8 @@
         <option value="$PROJECT_DIR$/Robot/wechat/config.py" />
         <option value="$PROJECT_DIR$/Robot/event/event_manager.py" />
         <option value="$PROJECT_DIR$/Robot/wechat/Robot.py" />
+        <option value="$PROJECT_DIR$/Robot/Robot.py" />
+        <option value="$PROJECT_DIR$/Robot/event_manager.py" />
       </list>
     </option>
   </component>
@@ -246,78 +246,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Robot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Robot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="robot_event" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Robot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kafka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wechat" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Robot" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="event" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -331,14 +259,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Robot" />
       <recent name="$PROJECT_DIR$/Robot/kafka" />
       <recent name="$PROJECT_DIR$/Robot/robot_event" />
       <recent name="$PROJECT_DIR$/Event" />
       <recent name="$PROJECT_DIR$/kafka" />
-      <recent name="$PROJECT_DIR$/wechatAPITest" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Testjieba">
+  <component name="RunManager" selected="Python.Robot">
     <configuration default="false" name="TestChat" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -407,6 +335,24 @@
       <module name="wechat" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Robot/event/Testjieba.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Robot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Robot/wechat" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="wechat" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Robot/Robot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -619,18 +565,20 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.TestChat" />
       <item index="1" class="java.lang.String" itemvalue="Python.TestChat (1)" />
       <item index="2" class="java.lang.String" itemvalue="Python.TestEvent" />
       <item index="3" class="java.lang.String" itemvalue="Python.Testjieba" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Robot" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.Testjieba" />
-        <item index="1" class="java.lang.String" itemvalue="Python.TestEvent" />
-        <item index="2" class="java.lang.String" itemvalue="Python.TestChat (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.TestChat" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.Robot" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Testjieba" />
+        <item index="2" class="java.lang.String" itemvalue="Python.TestEvent" />
+        <item index="3" class="java.lang.String" itemvalue="Python.TestChat (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Python.TestChat" />
       </list>
     </recent_temporary>
   </component>
@@ -898,16 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Robot/wechat/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-393">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Robot/wechat/log.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -916,41 +854,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Robot/wechat/itchat.pkl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17058">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Robot/wechat/LICENSE">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2403">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Robot/wechat/returnvalues.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-423">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Robot/wechat/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Robot/event/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1022,32 +928,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Robot/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Robot/kafka/kafkaTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="10" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Robot/kafka/kafka_manage_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
-          <folding>
-            <element signature="e#69#80#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Robot/event/TestEvent.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -1064,7 +944,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Robot/event/RobotEvent.py">
+    <entry file="file://$PROJECT_DIR$/Robot/wechat/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Robot/wechat/itchat.pkl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Robot/wechat/returnvalues.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-620">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Robot/wechat/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Robot/event/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Robot/RobotEvent.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
@@ -1072,22 +994,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Robot/event/event_manager.py">
+    <entry file="file://$PROJECT_DIR$/Robot/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Robot/kafka_manage_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Robot/kafkaTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="10" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Robot/Robot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
           <folding>
-            <element signature="e#1#16#0" expanded="true" />
+            <element signature="e#58#93#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Robot/wechat/Robot.py">
+    <entry file="file://$PROJECT_DIR$/Robot/event_manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="-35">
+          <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
           <folding>
-            <element signature="e#58#93#0" expanded="true" />
+            <element signature="e#1#16#0" expanded="true" />
           </folding>
         </state>
       </provider>

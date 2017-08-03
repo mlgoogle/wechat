@@ -1,9 +1,8 @@
 
 import libevent
-
 from multiprocessing import Process, Pipe, Pool
-from Robot.kafka.kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
-from Robot.wechat import config
+from kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
+from wechat import config
 
 recCon, sendCon = Pipe(duplex=False)
 pool = Pool(processes=5)
@@ -20,7 +19,7 @@ def setConfig():
 
 def callbackMsg(msg):
     pool.apply_async(deal_with_event(), (msg,))
-#写入事件
+
 def writeMsg(msg):
     sendCon.send(msg)
     pass
