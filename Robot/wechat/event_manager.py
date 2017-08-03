@@ -1,5 +1,5 @@
-
-from . import config
+import config
+#from . import config
 import libevent
 from multiprocessing import Process, Pipe, Pool
 from kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
@@ -14,8 +14,8 @@ def setConfig():
     p.start()
     consumer = KafkaConsumerManager(client=1, host=config.KAFKAHOST, coname=config.KAFKATOPIC)
     consumer.set_callback(callbackMsg)
-    p1 = Process(target=consumer.run(), args=(1,))
-    p1.start()
+#    p1 = Process(target=consumer.run(), args=(1,))
+#    p1.start()
 
 
 def callbackMsg(msg):
@@ -37,8 +37,7 @@ def creatEvent(con):
 
 def recall(ev, fd, what, event):
     e = event.recv()
-    if e.type == 1:
-        pool.apply_async(deal_with_event(), (e,))
+    pool.apply_async(deal_with_event(e), (e,))
 
 
 def deal_with_event(e):
