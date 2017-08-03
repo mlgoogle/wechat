@@ -1,5 +1,6 @@
 
-from . import config
+import config
+# from . import config
 import libevent
 from multiprocessing import Process, Pipe, Pool
 from kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
@@ -16,10 +17,11 @@ def setConfig():
     consumer.set_callback(callbackMsg)
     p1 = Process(target=consumer.run(), args=(1,))
     p1.start()
+    creatEvent(recCon)
 
 
 def callbackMsg(msg):
-    pool.apply_async(deal_with_event(), (msg,))
+    pool.apply_async(deal_with_event(e=msg, type=1), (msg,))
 
 def writeMsg(msg):
     sendCon.send(msg)
@@ -38,9 +40,19 @@ def creatEvent(con):
 def recall(ev, fd, what, event):
     e = event.recv()
     if e.type == 1:
-        pool.apply_async(deal_with_event(), (e,))
+        pool.apply_async(deal_with_event(e), (e,))
 
 
-def deal_with_event(e):
-    print e
+def deal_with_event(e, type=0):
+    if type == 0:
+        dealwith_wechatMsg(e)
+    elif type == 1:
+        dealwith_kafkaMsg(e)
+
+def dealwith_wechatMsg(msg):
+
+    pass
+
+def dealwith_kafkaMsg(msg):
+
     pass
