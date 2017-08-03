@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*-
 #encoding=utf-8
 from multiprocessing import Process
-
 import event_manager
-from wechat.core import Core
+from core import Core
 
 cr = Core()
 def wechatLogin(cr):
@@ -14,6 +13,7 @@ def wechatLogin(cr):
 @cr.msg_register('Text')
 def receiveMsg(msg):
     event_manager.sendCon.send(msg)
+    pass
 
 @cr.msg_register('Text', isGroupChat=True)
 def receiveGrope(msg):

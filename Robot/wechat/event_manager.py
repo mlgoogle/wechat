@@ -2,7 +2,7 @@
 import libevent
 from multiprocessing import Process, Pipe, Pool
 from kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
-from wechat import config
+from Robot.wechat import config
 
 recCon, sendCon = Pipe(duplex=False)
 pool = Pool(processes=5)
