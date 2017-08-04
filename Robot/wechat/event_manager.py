@@ -1,7 +1,5 @@
 
 import config
-# from . import config
-
 import libevent
 from multiprocessing import Process, Pipe, Pool
 from kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
@@ -17,7 +15,7 @@ def setConfig():
     p1 = Process(target=setkafka(), args=(1,))
     p1.start()
 def setkafka():
-    consumer = KafkaConsumerManager(client=1, host=config.KAFKAHOST, coname=config.KAFKATOPIC)
+    consumer = KafkaConsumerManager(client=1, host=config.KAFKA_HOST, coname=config.KAFKA_TOPIC)
     consumer.set_callback(callbackMsg)
     consumer.run()
 def callbackMsg(msg):
@@ -50,13 +48,15 @@ def deal_with_event(e, type=0):
         dealwith_kafkaMsg(e)
 
 def dealwith_wechatMsg(msg):
-    sendMsgToGroup(msg, userName='111')
+    print msg
     pass
 
 def dealwith_kafkaMsg(msg):
     sendMsgToGroup(msg, userName='111')
     pass
 
+
+# send wechat msg
 def sendMsgToGroup(msg, userName):
 
     raise NotImplementedError()
