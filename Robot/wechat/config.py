@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#encoding=utf-8
 import os, platform
 
 VERSION = '1.3.8'
@@ -17,3 +20,7 @@ SQL_PASSWD = 'smobaspecialplane!@#$%^'
 SQL_DBNAME = 'smoba_special_plane_t'
 SQL_PORT = 3306
 SQL_CHARSET = 'utf8'
+
+WIN_RATE_IDENTIFIER = '此次航班胜负:'
+
+EVALUTE_IDENTIFIER = '本次航班已经着陆'
