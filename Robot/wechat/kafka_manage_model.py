@@ -63,8 +63,7 @@ class KafkaConsumerManager(object):
 	    print isinstance(consumer, Iterable)
             for message in consumer:
                 try:
-                    print message
-                    self.callback(key=message[5],value=message[6])
+                    self.callback(key=message[5], value=message[6])
                 except Exception, e:
                     print e
  #                   mlog.log().error(e)

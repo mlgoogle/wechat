@@ -39,7 +39,8 @@ if __name__ == '__main__':
     event_manager.sendMsgToGroup = sendMsgToGroup
     event_manager.sendMsgToContanct = sendMsgToContanct
     event_manager.setConfig()
-    p1 = Process(target=wechatLogin, args=(cr,))
-    p1.start()
+    wechatLogin(cr)
+    # p = Process(target=wechatLogin, args=(cr,))
+    # p.start()
 
 
