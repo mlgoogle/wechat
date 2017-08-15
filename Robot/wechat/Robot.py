@@ -31,8 +31,8 @@ def sendMsgToGroup(msg, groupName):
     group = cr.search_chatrooms(name=groupName)[0]
     cr.send(msg, toUserName=group['UserName'])
 
-def sendMsgToContanct(msg, nickName):
-    contact = cr.search_friends(nickName=nickName)
+def sendMsgToContanct(msg, account):
+    contact = cr.search_friends(wechatAccount=account)
     cr.send(msg, toUserName=contact['UserName'])
 
 if __name__ == '__main__':

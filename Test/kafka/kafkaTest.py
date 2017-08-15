@@ -1,12 +1,18 @@
 
+import json
+from kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
 
-from kafka.kafka_manage_model import KafkaConsumerManager
+
+produc = KafkaProducerManager(client=1, host='122.144.169.214', coname='robot')
+dic = {
+    "flightNum": "G2222",
+    "flightNo": "G2222-1111",
+    "victoryRate": "80"
+ }
+jsoninfo = json.dumps(dic)
+print jsoninfo
+produc.push_data(parmas_message= jsoninfo, key='pushFlightComplete')
 
 
-def callbackMsg(msg):
-    print msg
 
-consumer = KafkaConsumerManager(client=1, host='139.224.34.22', coname='robot')
-consumer.set_callback(callbackMsg)
-consumer.run()
 

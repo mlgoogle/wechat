@@ -21,10 +21,10 @@ class KafkaProducerManager(object):
     def __del__(self):
         self.producer.close()
 
-    def push_data(self, parmas_message):
+    def push_data(self, parmas_message, key=None):
 	print 'write message'
         producer = self.producer
-        producer.send(self.coname, parmas_message.encode('utf-8'))
+        producer.send(topic=self.coname, value=parmas_message.encode('utf-8'), key=key.encode('utf-8'))
         producer.flush()
 	print 'write done'
 
@@ -60,9 +60,8 @@ class KafkaConsumerManager(object):
         """
         while True:
 	    print 'read connect', self.host, self.coname
-            consumer =  KafkaConsumer(bootstrap_servers=self.host)
+            consumer = KafkaConsumer(bootstrap_servers=self.host,group_id = 2)
             consumer.subscribe([self.coname])
-	    print isinstance(consumer, Iterable)
             for message in consumer:
                 try:
                     print message
