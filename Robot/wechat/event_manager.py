@@ -8,6 +8,11 @@ from kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
 import jieba
 import json
 
+recCon, sendCon = Pipe(duplex=False)
+pool = Pool(processes=5)
+producer = KafkaProducerManager(client=1, host=config.KAFKA_HOST, coname=config.KAFKA_SEND_TOPIC)
+endRecordMap = None
+
 #创建事件监听进程
 #创建kafka进程
 def setConfig():
@@ -116,8 +121,4 @@ def sendMsgToContanct(msg, account):
 
     raise NotImplementedError()
 
-if __name__ == '__main__':
-    recCon, sendCon = Pipe(duplex=False)
-    pool = Pool(processes=5)
-    producer = KafkaProducerManager(client=1, host=config.KAFKA_HOST, coname=config.KAFKA_SEND_TOPIC)
-    endRecordMap = None
+# if __name__ == '__main__':
