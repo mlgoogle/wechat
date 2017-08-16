@@ -8,6 +8,10 @@ from RobotEvent import RobotEvent
 from event_manager import event_manager
 from core import Core
 from multiprocessing import Pipe
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 cr = Core()
 recCon, sendCon = Pipe()
 
