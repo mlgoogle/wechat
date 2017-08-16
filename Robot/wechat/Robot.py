@@ -32,7 +32,7 @@ def sendMsgToGroup(msg, groupName):
     cr.send(msg, toUserName=group['UserName'])
 
 def sendMsgToContanct(msg, account):
-    contact = cr.search_friends(wechatAccount=account)
+    contact = cr.search_friends(remarkName=account)
     cr.send(msg, toUserName=contact['UserName'])
 
 if __name__ == '__main__':

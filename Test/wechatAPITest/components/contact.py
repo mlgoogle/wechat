@@ -93,7 +93,6 @@ def update_friend(self, userName):
             'EncryChatRoomId': '', } for u in userName], }
     friendList = json.loads(self.s.post(url, data=json.dumps(data), headers=headers
             ).content.decode('utf8', 'replace')).get('ContactList')
-
     update_local_friends(self, friendList)
     r = [self.storageClass.search_friends(userName=f['UserName'])
         for f in friendList]
@@ -279,6 +278,7 @@ def get_contact(self, update=False):
                 self.update_chatroom(chatroom['UserName'], detailedMember=True)
             return 0, []
         j = json.loads(r.content.decode('utf-8', 'replace'))
+        print 'get friend', j
         return j.get('Seq', 0), j.get('MemberList')
     seq, memberList = 0, []
     while 1:
