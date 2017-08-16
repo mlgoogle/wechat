@@ -1,12 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #encoding=utf-8
-import config, ProcessLock
+import config, ProcessLock, Robot
 import libevent
 from multiprocessing import Process, Pipe, Pool
 from kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
 import jieba
 import json
+
 
 recCon, sendCon = Pipe(duplex=False)
 pool = Pool(processes=5)
@@ -100,9 +101,9 @@ def dealwith_kafkaMsg(msg, key):
 #    ProcessLock.lock()
     if key == 'pushFlightOrder':
         flightRecordMap[msg['groupName']] = msg
-        sendMsgToContanct('亲，您有新的王者专机航班订单，请立刻登机准备起飞！', account=msg['captainAccount'])
+        Robot.sendMsgToContanct('亲，您有新的王者专机航班订单，请立刻登机准备起飞！', account=msg['captainAccount'])
     elif key == 'pushFlightStop':
-        sendMsgToContanct(('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
+        Robot.sendMsgToContanct(('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
     else:
         pass
  #   ProcessLock.unlock()

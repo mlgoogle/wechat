@@ -3,27 +3,46 @@
 #encoding=utf-8
 from multiprocessing import Process
 from core import Core
+
 cr = Core()
+
+def wechatLogin(core):
+    cr.auto_login(enableCmdQR=True, hotReload=True)
+    cr.get_contact(update=True)
+    cr.run()
 
 @cr.msg_register('Text')
 def receiveMsg(msg):
-    sendMsgToGroup(msg['FromUserName'])
-    # print msg['FromUserName']
-    # cr.send(msg['FromUserName'], toUserName=msg['FromUserName'])
+   # event_manager.sendCon.send(msg)
+    print msg
+    sendMsgToContanct('dd', account='Erwin')
+    pass
+
 @cr.msg_register('Text', isGroupChat=True)
 def receiveGrope(msg):
-    sendMsgToGroup(msg)
+    pass
+
+@cr.msg_register('Friends')
+def receiveAddFriend(msg):
+    msg.user.verify()
+    msg.user.send('欢迎添加机器人 王者小机 !')
+
+def sendMsgToGroup(msg, groupName):
+    group = cr.search_chatrooms(name=groupName)[0]
+    cr.send(msg, toUserName=group['UserName'])
 
 
-def sendMsgToGroup(msg):
-    group = cr.search_friends(name='Erwin')[0]
-    print group
-    print group['UserName']
-    name = group['UserName']
-    cr.send(msg, toUserName=name)
+def sendMsgToContanct(msg, account):
+    print account
+    print cr.memberList
 
+    contact = cr.search_friends(name=account)[0]
+    print contact
+    cr.send(msg, toUserName=contact['UserName'])
 
-cr.auto_login(hotReload=True)
-cr.run()
+if __name__ == '__main__':
+    wechatLogin(cr)
+    # p = Process(target=wechatLogin, args=(cr,))
+    # p.start()
 
 
