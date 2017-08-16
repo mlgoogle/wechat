@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 #encoding=utf-8
 from multiprocessing import Process
-import jieba
 from core import Core
 cr = Core()
 
@@ -13,17 +12,18 @@ def receiveMsg(msg):
 
 @cr.msg_register('Text', isGroupChat=True)
 def receiveGrope(msg):
-    seg_list = jieba.cut(msg['Text'], cut_all = False)
-    sendMsgToGroup('%s : %s' % ('write msg', " ".join(seg_list)))
+    sendMsgToGroup(msg)
 
 
 def sendMsgToGroup(msg):
     group = cr.search_friends()
-    name = group[0]['UserName']
+    print group
+    print group['UserName']
+    name = group['UserName']
     cr.send(msg, toUserName=name)
 
 
-cr.auto_login(enableCmdQR=2)
+cr.auto_login(hotReload=True)
 cr.run()
 
 

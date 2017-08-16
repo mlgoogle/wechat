@@ -32,7 +32,7 @@ def setkafka():
 
 #kafka消费者回调
 def callbackMsg(key,value):
-    pool.apply_async(dealwith_event(e=value, type=1, key=key), (value,))
+    pool.apply_async(dealwith_event(e=json.loads(value), type=1, key=key), (value,))
 
 
 #事件写入

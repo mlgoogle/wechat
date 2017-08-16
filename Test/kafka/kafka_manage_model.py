@@ -4,10 +4,11 @@ Created on 2016年7月28日
 
 @author: kerry
 """
-import json
 #from tools.base.mlog import mlog
-from kafka import KafkaConsumer,KafkaProducer
 from collections import Iterable
+
+from kafka import KafkaConsumer,KafkaProducer
+
 
 class KafkaProducerManager(object):
 
@@ -24,7 +25,7 @@ class KafkaProducerManager(object):
     def push_data(self, parmas_message, key=None):
 	print 'write message'
         producer = self.producer
-        producer.send(topic=self.coname, value=parmas_message.encode('utf-8'), key=key.encode('utf-8'))
+        producer.send(topic=self.coname, value=parmas_message.encode('utf-8'), key=key)
         producer.flush()
 	print 'write done'
 
@@ -49,10 +50,7 @@ class KafkaConsumerManager(object):
     def set_callback(self, callback):
         self.callback = callback
 
-#    def process_data(self, data):
-#        name = data['key_name'] + data['pos_name'] + '.txt'
-#        ftp_url = '~/text_storage/' + data['key_name'] + '/' + data['pos_name']
-        # ftp_manager_t.download(str(name), (ftp_url))
+
 
     def run(self):
         """
@@ -60,13 +58,13 @@ class KafkaConsumerManager(object):
         """
         while True:
 	    print 'read connect', self.host, self.coname
-            consumer = KafkaConsumer(bootstrap_servers=self.host,group_id = 2)
+            consumer =  KafkaConsumer(bootstrap_servers=self.host)
             consumer.subscribe([self.coname])
+	    print isinstance(consumer, Iterable)
             for message in consumer:
                 try:
                     print message
-           #         json_info = json.loads(message[6])
-                    self.callback(message[6])
+                    self.callback(key=message[5], value=message[6])
                 except Exception, e:
                     print e
  #                   mlog.log().error(e)
