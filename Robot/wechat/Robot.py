@@ -16,6 +16,7 @@ def wechatLogin(core):
     cr.run()
 
 def writeMsg(msg, account):
+    print msg, account
     e = RobotEvent(account=account, msg=msg)
     sendCon.send(e)
 
