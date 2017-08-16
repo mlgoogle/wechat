@@ -38,6 +38,7 @@ class event_manager(object):
         kafkaProcess = Process(target=self.setkafka(), args=(1,))
         kafkaProcess.start()
         base = self.initLibEvent()
+        print self.robotCon.fileno()
         ev = libevent.Event(base, self.robotCon.fileno(), libevent.EV_READ | libevent.EV_PERSIST, self.recall, self.robotCon)
         ev.add(0.01)
         base.loop()
@@ -89,8 +90,9 @@ class event_manager(object):
     def dealwith_kafkaMsg(self, msg, key):
         if key == 'pushFlightOrder':
             self.flightRecordMap[msg['groupName']] = msg
-            mes = '您的航班【 %s 】已售出票，请到微信群【%s】，联系相关乘客，做好登机前准备。' % (msg['flightNo'], msg['groupName'])
+            mes = '您的航班【 %s 】已售出票，请到微信群【 %s 】，联系相关乘客，做好登机前准备。' % (msg['flightNo'], msg['groupName'])
             account = msg['captainAccount']
+            print mes
             e = {'msg': mes,
                  'account' : account
             }
