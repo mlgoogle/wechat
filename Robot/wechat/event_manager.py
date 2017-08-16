@@ -20,6 +20,7 @@ flightRecordMap = {'type' : 'flightRecord'}
 #创建kafka进程
 def setConfig(robotCon):
     RobotCon = robotCon
+    print robotCon
     eventProcess = Process(target=creatEvent, args=(robotCon,))
     eventProcess.start()
 
