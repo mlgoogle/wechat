@@ -18,8 +18,8 @@ endRecordMap = None
 def setConfig():
     eventProcess = Process(target=creatEvent, args=(recCon,))
     eventProcess.start()
-    kafkaProcess = Process(target=setkafka(), args=(1,))
-    kafkaProcess.start()
+#    kafkaProcess = Process(target=setkafka(), args=(1,))
+#    kafkaProcess.start()
 
 
 #设置kafka消费者
@@ -45,6 +45,8 @@ def initLibEvent():
    return libevent.Base()
 
 def creatEvent(con):
+    kafkaProcess = Process(target=setkafka(), args=(1,)) 
+    kafkaProcess.start()
     base = initLibEvent()
     ev = libevent.Event(base, 1, libevent.EV_READ|libevent.EV_PERSIST, recall, con)
     ev.add(0.01)
@@ -96,14 +98,15 @@ def dealwith_endrecord(msg, isdealwith):
 
 
 def dealwith_kafkaMsg(msg, key):
-    ProcessLock.lock()
+    print 'receive:', msg
+#    ProcessLock.lock()
     if key == 'pushFlightOrder':
-        sendMsgToContanct('亲，您有新的王者专机航班订单，请立刻登机准备起飞！', account=msg['captainAccount'])
+        sendMsgToContanct('亲，您有新的王者专机航班订单，请立刻登机准备起飞！', account='biaobiao920505')
     elif key == 'pushFlightStop':
         sendMsgToContanct(('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
     else:
         pass
-    ProcessLock.unlock()
+ #   ProcessLock.unlock()
 
 
 def writerMsgOnKafka(msg,key):
