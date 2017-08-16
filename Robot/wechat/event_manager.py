@@ -87,7 +87,7 @@ class event_manager(object):
             mes = '亲，您有新的王者专机航班订单，请立刻登机准备起飞！'
             account = msg['captainAccount']
             e = RobotEvent(account=account, msg=mes)
-            self.send(e)
+            self.robotCon.send(e)
         elif key == 'pushFlightStop':
             pass
             #  Robot.writeMsg(sendCon=RobotCon, msg=('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
