@@ -59,11 +59,10 @@ def sendMsgToContanct(msg, account):
 
 
 if __name__ == '__main__':
-    creatEvent(recCon)
     event_manager.setConfig()
-
+    p = Process(target=creatEvent, args=(recCon,))
+    p.start()
     wechatLogin(cr)
-    # p = Process(target=wechatLogin, args=(cr,))
-    # p.start()
+
 
 
