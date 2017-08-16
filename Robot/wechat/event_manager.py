@@ -20,8 +20,10 @@ class event_manager(object):
 
 
     def setConfig(self):
-        p = Process(target=self.creatEvent())
-        p.start()
+        t = threading.Thread(target=self.creatEvent())
+        t.start()
+      #  p = Process(target=self.creatEvent())
+      #  p.start()
         kafkaProcess = Process(target=self.setkafka())
         kafkaProcess.start()
 
@@ -39,16 +41,12 @@ class event_manager(object):
 
     def creatEvent(self):
         base = self.initLibEvent()
-        print self.robotCon.fileno()
         ev = libevent.Event(base, self.robotCon.fileno(), libevent.EV_READ | libevent.EV_PERSIST, self.recall, self.robotCon)
         ev.add(0.01)
         base.loop()
 
     def recall(self, ev, fd, what, event):
-        print fd
-        print '222'
         e = event.recv()
-        print e
         self.pool.apply_async(self.dealwith_event(e), (e,))
 
     def dealwith_event(self, e, type=0, key=None):
