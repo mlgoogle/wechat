@@ -3,6 +3,7 @@
 #encoding=utf-8
 from multiprocessing import Process
 import libevent
+import threading
 from RobotEvent import RobotEvent
 from event_manager import event_manager
 from core import Core
@@ -58,8 +59,8 @@ def sendMsgToContanct(msg, account):
 if __name__ == '__main__':
     manager = event_manager(robotCon=recCon)
     manager.setConfig()
-    p = Process(target=creatEvent, args=(sendCon,))
-    p.start()
+    t = threading.Thread(target=creatEvent,args=(sendCon,))
+    t.start()
     wechatLogin(cr)
 
 
