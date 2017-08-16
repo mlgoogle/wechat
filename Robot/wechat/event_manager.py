@@ -101,6 +101,8 @@ def dealwith_kafkaMsg(msg, key):
         mes = '亲，您有新的王者专机航班订单，请立刻登机准备起飞！'
         account = msg['captainAccount']
         e = RobotEvent(account=account, msg=mes)
+        print account
+        print RobotCon
         RobotCon.send(e)
     elif key == 'pushFlightStop':
         pass
