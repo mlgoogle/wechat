@@ -17,7 +17,7 @@ def wechatLogin(core):
 
 def writeMsg(msg, account):
     e = RobotEvent(account=account, msg=msg)
-    sendCon.send(msg)
+    sendCon.send(e)
 
 def initLibEvent():
    return libevent.Base()
@@ -59,7 +59,9 @@ def sendMsgToContanct(msg, account):
 
 
 if __name__ == '__main__':
+    creatEvent(recCon)
     event_manager.setConfig()
+
     wechatLogin(cr)
     # p = Process(target=wechatLogin, args=(cr,))
     # p.start()
