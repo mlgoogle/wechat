@@ -64,6 +64,7 @@ class event_manager(object):
                     resultList.append(text)
             if resultList.count > 1:
                 rate = resultList[0] / resultList[1]
+                print 'find flight end', nickName
                 if self.flightRecordMap[nickName]:
                     flightInfo = self.flightRecordMap[nickName]
                     parametersMsg = {'flightNum': flightInfo['flightNum'],
@@ -86,15 +87,20 @@ class event_manager(object):
     def dealwith_kafkaMsg(self, msg, key):
         if key == 'pushFlightOrder':
             self.flightRecordMap[msg['groupName']] = msg
-            mes = '亲，您有新的王者专机航班订单，请立刻登机准备起飞！'
+            mes = '您的航班【 %s 】已售出票，请到微信群【%s】，联系相关乘客，做好登机前准备。' % (msg['flightNo'], msg['groupName'])
             account = msg['captainAccount']
             e = {'msg': mes,
                  'account' : account
             }
             self.robotCon.send(e)
         elif key == 'pushFlightStop':
+            mes = '您的航班【 %s 】已停班。' % (msg['flightNo'])
+            account = msg['captainAccount']
+            e = {'msg':mes,
+                'account':account
+            }
+            self.robotCon.send(e)
             pass
-            #  Robot.writeMsg(sendCon=RobotCon, msg=('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
         else:
             pass
 
