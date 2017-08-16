@@ -27,9 +27,9 @@ def creatEvent(con):
 def recall(ev, fd, what, event):
     print ev
     e = event.recv()
-    print e
     if e:
-        sendMsgToContanct(e.msg, account=e.account)
+        print e
+        # sendMsgToContanct(e.msg, account=e.account)
 
 @cr.msg_register('Text')
 def receiveMsg(msg):
