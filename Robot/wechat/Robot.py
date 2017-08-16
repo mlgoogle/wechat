@@ -22,14 +22,12 @@ def creatEvent(con):
     base = initLibEvent()
     ev = libevent.Event(base, 1, libevent.EV_READ|libevent.EV_PERSIST, recall, con)
     ev.add(0.01)
-    print 'ssss'
     base.loop()
 
 def recall(ev, fd, what, event):
     e = event.recv()
     if e:
-        print 'haha'
-        # sendMsgToContanct(e.msg, account=e.account)
+        sendMsgToContanct(e['msg'], account=e['account'])
 
 @cr.msg_register('Text')
 def receiveMsg(msg):
