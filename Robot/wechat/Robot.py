@@ -7,7 +7,7 @@ from core import Core
 
 cr = Core()
 
-def wechatLogin(cr):
+def wechatLogin(core):
     cr.auto_login(enableCmdQR=True, hotReload=True)
     cr.get_contact(update=True)
     cr.run()
@@ -15,6 +15,7 @@ def wechatLogin(cr):
 @cr.msg_register('Text')
 def receiveMsg(msg):
    # event_manager.sendCon.send(msg)
+    print msg
     pass
 
 @cr.msg_register('Text', isGroupChat=True)
@@ -36,8 +37,7 @@ def sendMsgToContanct(msg, account):
     print account
     print cr.memberList
     if cr.memberList.count() < 1:
-	cr.get_contact(update=True)
-    print cr.search_friends()
+	    cr.get_contact(update=True)
     contact = cr.search_friends(name=account)[0]
     print contact
     cr.send(msg, toUserName=contact['UserName'])
