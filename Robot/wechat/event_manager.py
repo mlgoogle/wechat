@@ -10,6 +10,7 @@ import json
 
 
 recCon, sendCon = Pipe(duplex=False)
+RobotCon = None
 pool = Pool(processes=5)
 producer = KafkaProducerManager(client=1, host=config.KAFKA_HOST, coname=config.KAFKA_SEND_TOPIC)
 endRecordMap = {'type' : 'endRecord'}
@@ -17,7 +18,8 @@ flightRecordMap = {'type' : 'flightRecord'}
 
 #创建事件监听进程
 #创建kafka进程
-def setConfig():
+def setConfig(robotCon):
+    RobotCon = robotCon
     eventProcess = Process(target=creatEvent, args=(recCon,))
     eventProcess.start()
 #    kafkaProcess = Process(target=setkafka(), args=(1,))
@@ -101,9 +103,9 @@ def dealwith_kafkaMsg(msg, key):
 #    ProcessLock.lock()
     if key == 'pushFlightOrder':
         flightRecordMap[msg['groupName']] = msg
-        Robot.writeMsg(msg='亲，您有新的王者专机航班订单，请立刻登机准备起飞！', account=msg['captainAccount'])
+        Robot.writeMsg(RobotCon, msg='亲，您有新的王者专机航班订单，请立刻登机准备起飞！', account=msg['captainAccount'])
     elif key == 'pushFlightStop':
-        Robot.writeMsg(msg=('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
+        Robot.writeMsg(RobotCon, msg=('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
     else:
         pass
  #   ProcessLock.unlock()

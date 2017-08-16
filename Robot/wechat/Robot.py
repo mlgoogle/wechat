@@ -16,7 +16,7 @@ def wechatLogin(core):
     cr.get_contact(update=True)
     cr.run()
 
-def writeMsg(msg, account):
+def writeMsg(sendCon,msg, account):
     print msg, account
     e = RobotEvent(account=account, msg=msg)
     sendCon.send(e)
@@ -64,7 +64,7 @@ def sendMsgToContanct(msg, account):
 
 
 if __name__ == '__main__':
-    event_manager.setConfig()
+    event_manager.setConfig(robotCon=sendCon)
     p = Process(target=creatEvent, args=(recCon,))
     p.start()
     wechatLogin(cr)
