@@ -42,6 +42,7 @@ def receiveMsg(msg):
 @cr.msg_register('Text', isGroupChat=True)
 def receiveGrope(msg):
     sendCon.send(msg)
+    print 'send MSG'
     pass
 
 @cr.msg_register('Friends')

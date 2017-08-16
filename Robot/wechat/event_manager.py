@@ -38,7 +38,8 @@ class event_manager(object):
         kafkaProcess = Process(target=self.setkafka(), args=(1,))
         kafkaProcess.start()
         base = self.initLibEvent()
-        ev = libevent.Event(base, 1, libevent.EV_READ | libevent.EV_PERSIST, self.recall, con)
+        print con
+        ev = libevent.Event(base, 2, libevent.EV_READ | libevent.EV_PERSIST, self.recall, con)
         ev.add(0.01)
         base.loop()
 
