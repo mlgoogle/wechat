@@ -4,15 +4,11 @@
 from multiprocessing import Process
 import jieba
 from core import Core
-
 cr = Core()
-def wechatLogin(cr):
-    cr.auto_login(enableCmdQR=True, hotReload=True)
-    cr.run()
 
 @cr.msg_register('Text')
 def receiveMsg(msg):
-    sendMsgToGroup('dddd')
+    sendMsgToGroup(msg)
 
 
 @cr.msg_register('Text', isGroupChat=True)
@@ -22,14 +18,12 @@ def receiveGrope(msg):
 
 
 def sendMsgToGroup(msg):
-    cr.get_contact(update=True)
-    group = cr.search_friends(remarkName='')
+    group = cr.search_friends()
     name = group[0]['UserName']
     cr.send(msg, toUserName=name)
 
 
-p1 = Process(target=wechatLogin, args=(cr,))
-p1.start()
-
+cr.auto_login(enableCmdQR=2)
+cr.run()
 
 

@@ -9,7 +9,7 @@ import requests
 
 import config
 
-logger = logging.getLogger('itchat')
+logger = logging.getLogger('wechatRobot')
 
 emojiRegex = re.compile(r'<span class="emoji emoji(.{1,10})"></span>')
 htmlParser = HTMLParser()

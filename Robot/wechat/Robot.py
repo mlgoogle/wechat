@@ -31,6 +31,7 @@ def sendMsgToGroup(msg, groupName):
     group = cr.search_chatrooms(name=groupName)[0]
     cr.send(msg, toUserName=group['UserName'])
 
+
 def sendMsgToContanct(msg, account):
     contact = cr.search_friends(remarkName=account)
     cr.send(msg, toUserName=contact['UserName'])

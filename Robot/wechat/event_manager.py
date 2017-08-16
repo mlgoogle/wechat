@@ -11,15 +11,16 @@ import json
 recCon, sendCon = Pipe(duplex=False)
 pool = Pool(processes=5)
 producer = KafkaProducerManager(client=1, host=config.KAFKA_HOST, coname=config.KAFKA_SEND_TOPIC)
-endRecordMap = None
+endRecordMap = {'type' : 'endRecord'}
+flightRecordMap = {'type' : 'flightRecord'}
 
 #创建事件监听进程
 #创建kafka进程
 def setConfig():
     eventProcess = Process(target=creatEvent, args=(recCon,))
     eventProcess.start()
-    kafkaProcess = Process(target=setkafka(), args=(1,))
-    kafkaProcess.start()
+#    kafkaProcess = Process(target=setkafka(), args=(1,))
+#    kafkaProcess.start()
 
 
 #设置kafka消费者
@@ -45,6 +46,8 @@ def initLibEvent():
    return libevent.Base()
 
 def creatEvent(con):
+    kafkaProcess = Process(target=setkafka(), args=(1,)) 
+    kafkaProcess.start()
     base = initLibEvent()
     ev = libevent.Event(base, 1, libevent.EV_READ|libevent.EV_PERSIST, recall, con)
     ev.add(0.01)
@@ -73,9 +76,11 @@ def dealwith_wechatMsg(msg):
                 resultList.append(text)
         if resultList.count > 1:
             rate = resultList[0] / resultList[1]
-            parametersMsg = {'flightNum' : '11',
-                             'flightNo' : '11',
-                             'victoryRate' : str(rate)}
+            if flightRecordMap[nickName]:
+                flightInfo = flightRecordMap[nickName]
+                parametersMsg = {'flightNum' : flightInfo['flightNum'],
+                                 'flightNo' : flightInfo['flightNo'],
+                                 'victoryRate' : str(rate)}
             writerMsgOnKafka(json.dumps(parametersMsg), key='pushFlightComplete')
     elif msgText.find(config.EVALUTE_IDENTIFIER):
         if endRecordMap[nickName] != True:
@@ -96,14 +101,15 @@ def dealwith_endrecord(msg, isdealwith):
 
 
 def dealwith_kafkaMsg(msg, key):
-    ProcessLock.lock()
+#    ProcessLock.lock()
     if key == 'pushFlightOrder':
+        flightRecordMap[msg['groupName']] = msg
         sendMsgToContanct('亲，您有新的王者专机航班订单，请立刻登机准备起飞！', account=msg['captainAccount'])
     elif key == 'pushFlightStop':
         sendMsgToContanct(('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
     else:
         pass
-    ProcessLock.unlock()
+ #   ProcessLock.unlock()
 
 
 def writerMsgOnKafka(msg,key):
