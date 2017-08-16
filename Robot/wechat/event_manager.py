@@ -20,7 +20,7 @@ class event_manager(object):
 
 
     def setConfig(self):
-        p = Process(target=self.creatEvent, args=(1,))
+        p = Process(target=self.creatEvent)
         p.start()
 
     def initLibEvent(self):
