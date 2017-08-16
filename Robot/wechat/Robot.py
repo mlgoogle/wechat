@@ -8,17 +8,12 @@ import event_manager
 from core import Core
 from multiprocessing import Pipe
 cr = Core()
-print cr
-recCon, sendCon = Pipe(duplex=False)
+recCon, sendCon = Pipe()
 
 def wechatLogin(core):
     cr.auto_login(enableCmdQR=True, hotReload=True)
     cr.run()
 
-def writeMsg(sendCon,msg, account):
-    print msg, account
-    e = RobotEvent(account=account, msg=msg)
-    sendCon.send(e)
 
 def initLibEvent():
    return libevent.Base()
@@ -43,7 +38,7 @@ def receiveMsg(msg):
 
 @cr.msg_register('Text', isGroupChat=True)
 def receiveGrope(msg):
-    event_manager.sendCon.send(msg)
+    sendCon.send(msg)
     pass
 
 @cr.msg_register('Friends')
@@ -58,14 +53,13 @@ def sendMsgToGroup(msg, groupName):
 
 
 def sendMsgToContanct(msg, account):
-    print msg
     contact = cr.search_friends(name=account)[0]
     cr.send(msg, toUserName=contact['UserName'])
 
 
 if __name__ == '__main__':
-    event_manager.setConfig(robotCon=sendCon)
-    p = Process(target=creatEvent, args=(recCon,))
+    event_manager.setConfig(robotCon=recCon)
+    p = Process(target=creatEvent, args=(sendCon,))
     p.start()
     wechatLogin(cr)
 

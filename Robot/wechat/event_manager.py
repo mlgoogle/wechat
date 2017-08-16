@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #encoding=utf-8
-import config, ProcessLock, Robot
+import config, ProcessLock
 import libevent
 from multiprocessing import Process, Pipe, Pool
 from kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
@@ -21,7 +21,7 @@ flightRecordMap = {'type' : 'flightRecord'}
 #创建kafka进程
 def setConfig(robotCon):
     RobotCon = robotCon
-    eventProcess = Process(target=creatEvent, args=(recCon,))
+    eventProcess = Process(target=creatEvent, args=(RobotCon,))
     eventProcess.start()
 #    kafkaProcess = Process(target=setkafka(), args=(1,))
 #    kafkaProcess.start()
@@ -108,9 +108,10 @@ def dealwith_kafkaMsg(msg, key):
         account = msg['captainAccount']
         e = RobotEvent(account=account, msg=mes)
 
-        Robot.sendCon.send(e)
+        RobotCon.send(e)
     elif key == 'pushFlightStop':
-        Robot.writeMsg(sendCon=RobotCon, msg=('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
+        pass
+      #  Robot.writeMsg(sendCon=RobotCon, msg=('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
     else:
         pass
  #   ProcessLock.unlock()
@@ -119,14 +120,5 @@ def dealwith_kafkaMsg(msg, key):
 def writerMsgOnKafka(msg,key):
     producer.push_data(msg, key=key)
 
-
-# send wechat msg
-def sendMsgToGroup(msg, groupName):
-
-    raise NotImplementedError()
-
-def sendMsgToContanct(msg, account):
-
-    raise NotImplementedError()
 
 # if __name__ == '__main__':
