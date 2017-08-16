@@ -33,7 +33,7 @@ def sendMsgToGroup(msg, groupName):
 
 
 def sendMsgToContanct(msg, account):
-    contact = cr.search_friends(remarkName=account)
+    contact = cr.search_friends(name=account)[0]
     cr.send(msg, toUserName=contact['UserName'])
 
 if __name__ == '__main__':

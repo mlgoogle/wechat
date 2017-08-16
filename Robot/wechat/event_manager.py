@@ -37,9 +37,7 @@ def callbackMsg(key,value):
 
 #事件写入
 def writeMsg(msg):
-    ProcessLock.lock()
     sendCon.send(msg)
-    ProcessLock.unlock()
 
 
 def initLibEvent():
@@ -94,9 +92,7 @@ def dealwith_wechatMsg(msg):
 
 
 def dealwith_endrecord(msg, isdealwith):
-    ProcessLock.lock()
     endRecordMap[msg['NickName']] = isdealwith
-    ProcessLock.unlock()
 
 
 
@@ -113,9 +109,7 @@ def dealwith_kafkaMsg(msg, key):
 
 
 def writerMsgOnKafka(msg,key):
-    ProcessLock.lock()
     producer.push_data(msg, key=key)
-    ProcessLock.unlock()
 
 
 # send wechat msg
