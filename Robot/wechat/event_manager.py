@@ -88,8 +88,9 @@ class event_manager(object):
             self.flightRecordMap[msg['groupName']] = msg
             mes = '亲，您有新的王者专机航班订单，请立刻登机准备起飞！'
             account = msg['captainAccount']
-            e = RobotEvent(account=account, msg=mes)
-            print self.robotCon
+            e = {'msg': mes,
+                 'account' : account
+            }
             self.robotCon.send(e)
         elif key == 'pushFlightStop':
             pass
