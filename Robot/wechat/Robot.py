@@ -13,7 +13,6 @@ recCon, sendCon = Pipe(duplex=False)
 
 def wechatLogin(core):
     cr.auto_login(enableCmdQR=True, hotReload=True)
-    cr.get_contact(update=True)
     cr.run()
 
 def writeMsg(sendCon,msg, account):
@@ -31,7 +30,9 @@ def creatEvent(con):
     base.loop()
 
 def recall(ev, fd, what, event):
+    print ev
     e = event.recv()
+    print e
     if e:
         sendMsgToContanct(e.msg, account=e.account)
 
