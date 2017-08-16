@@ -12,6 +12,7 @@ from RobotEvent import RobotEvent
 class event_manager(object):
     def __init__(self, robotCon):
         self.robotCon = robotCon
+        print robotCon
         self.producer = KafkaProducerManager(client=1, host=config.KAFKA_HOST, coname=config.KAFKA_SEND_TOPIC)
         self.pool = Pool(processes=5)
         self.endRecordMap = {'type' : 'endRecord'}
@@ -87,6 +88,7 @@ class event_manager(object):
             mes = '亲，您有新的王者专机航班订单，请立刻登机准备起飞！'
             account = msg['captainAccount']
             e = RobotEvent(account=account, msg=mes)
+            print self.robotCon
             self.robotCon.send(e)
         elif key == 'pushFlightStop':
             pass
