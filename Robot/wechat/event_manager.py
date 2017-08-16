@@ -86,7 +86,7 @@ class event_manager(object):
     def dealwith_kafkaMsg(self, msg, key):
         if key == 'pushFlightOrder':
             self.flightRecordMap[msg['groupName']] = msg
-            mes = '亲，您有新的王者专机航班订单，请立刻登机准备起飞！'.encode(encoding='utf-8')
+            mes = '亲，您有新的王者专机航班订单，请立刻登机准备起飞！'
             account = msg['captainAccount']
             e = {'msg': mes,
                  'account' : account

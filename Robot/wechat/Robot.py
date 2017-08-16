@@ -47,7 +47,7 @@ def receiveAddFriend(msg):
 
 def sendMsgToGroup(msg, groupName):
     group = cr.search_chatrooms(name=groupName)[0]
-    cr.send(msg, toUserName=group['UserName'])
+    cr.send(msg.encode(encoding='utf-8'), toUserName=group['UserName'])
 
 
 def sendMsgToContanct(msg, account):
