@@ -32,7 +32,6 @@ def creatEvent(con):
 
 def recall(ev, fd, what, event):
     e = event.recv()
-    print e
     if e:
         sendMsgToContanct(e.msg, account=e.account)
 

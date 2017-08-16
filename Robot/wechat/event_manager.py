@@ -7,6 +7,7 @@ from multiprocessing import Process, Pipe, Pool
 from kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
 import jieba
 import json
+from RobotEvent import RobotEvent
 
 
 recCon, sendCon = Pipe(duplex=False)
@@ -103,7 +104,11 @@ def dealwith_kafkaMsg(msg, key):
 #    ProcessLock.lock()
     if key == 'pushFlightOrder':
         flightRecordMap[msg['groupName']] = msg
-        Robot.writeMsg(sendCon=RobotCon, msg='亲，您有新的王者专机航班订单，请立刻登机准备起飞！', account=msg['captainAccount'])
+        mes = '亲，您有新的王者专机航班订单，请立刻登机准备起飞！'
+        account = msg['captainAccount']
+        e = RobotEvent(account=account, msg=mes)
+
+        Robot.sendCon.send(e)
     elif key == 'pushFlightStop':
         Robot.writeMsg(sendCon=RobotCon, msg=('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
     else:
