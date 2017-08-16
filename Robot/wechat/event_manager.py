@@ -101,9 +101,9 @@ def dealwith_kafkaMsg(msg, key):
 #    ProcessLock.lock()
     if key == 'pushFlightOrder':
         flightRecordMap[msg['groupName']] = msg
-        Robot.sendMsgToContanct('亲，您有新的王者专机航班订单，请立刻登机准备起飞！', account=msg['captainAccount'])
+        Robot.writeMsg(msg='亲，您有新的王者专机航班订单，请立刻登机准备起飞！', account=msg['captainAccount'])
     elif key == 'pushFlightStop':
-        Robot.sendMsgToContanct(('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
+        Robot.writeMsg(msg=('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
     else:
         pass
  #   ProcessLock.unlock()
