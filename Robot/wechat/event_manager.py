@@ -20,7 +20,7 @@ class event_manager(object):
 
 
     def setConfig(self):
-        t = threading.Thread(target=self.creatEvent, args=self.robotCon)
+        t = threading.Thread(target=self.creatEvent, args=(self.robotCon,))
         t.start()
         kafkaProcess = Process(target=self.setkafka(), args=(1,))
         kafkaProcess.start()
