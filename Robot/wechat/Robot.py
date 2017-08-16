@@ -44,7 +44,6 @@ def receiveMsg(msg):
 @cr.msg_register('Text', isGroupChat=True)
 def receiveGrope(msg):
     sendCon.send(msg)
-    print 'send MSG'
     pass
 
 @cr.msg_register('Friends')
@@ -58,7 +57,6 @@ def sendMsgToGroup(msg, groupName):
 
 
 def sendMsgToContanct(msg, account):
-    print msg, account
     contact = cr.search_friends(name=account)[0]
     cr.send(msg, toUserName=contact['UserName'])
 
@@ -68,7 +66,6 @@ if __name__ == '__main__':
     manager.setConfig()
     t = threading.Thread(target=creatEvent,args=(sendCon,))
     t.start()
-    print '线程启动'
     wechatLogin(cr)
 
 

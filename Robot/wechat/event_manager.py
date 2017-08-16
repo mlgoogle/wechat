@@ -92,7 +92,6 @@ class event_manager(object):
             self.flightRecordMap[msg['groupName']] = msg
             mes = '您的航班  %s  已售出票，请到微信群  %s ，联系相关乘客，做好登机前准备。' % (msg['flightNo'], msg['groupName'])
             account = msg['captainAccount']
-            print mes
             e = {'msg': mes,
                  'account' : account
             }
