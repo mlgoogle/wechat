@@ -8,11 +8,13 @@ from RobotEvent import RobotEvent
 from event_manager import event_manager
 from core import Core
 from multiprocessing import Pipe
+import os
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 
 cr = Core()
+write, read = os.pipe()
 recCon, sendCon = Pipe()
 
 def wechatLogin(core):
@@ -25,7 +27,7 @@ def initLibEvent():
 
 def creatEvent(con):
     base = initLibEvent()
-    ev = libevent.Event(base, 1, libevent.EV_READ|libevent.EV_PERSIST, recall, con)
+    ev = libevent.Event(base, con.fileno(), libevent.EV_READ|libevent.EV_PERSIST, recall, con)
     ev.add(0.01)
     base.loop()
 
