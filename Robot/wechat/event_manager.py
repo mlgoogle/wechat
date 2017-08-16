@@ -9,9 +9,8 @@ import jieba
 import json
 from RobotEvent import RobotEvent
 
-
-recCon, sendCon = Pipe(duplex=False)
-RobotCon = sendCon
+send, rec = Pipe()
+RobotCon = send
 pool = Pool(processes=5)
 producer = KafkaProducerManager(client=1, host=config.KAFKA_HOST, coname=config.KAFKA_SEND_TOPIC)
 endRecordMap = {'type' : 'endRecord'}
@@ -21,10 +20,9 @@ flightRecordMap = {'type' : 'flightRecord'}
 #创建kafka进程
 def setConfig(robotCon):
     RobotCon = robotCon
-    eventProcess = Process(target=creatEvent, args=(RobotCon,))
+    eventProcess = Process(target=creatEvent, args=(robotCon,))
     eventProcess.start()
-#    kafkaProcess = Process(target=setkafka(), args=(1,))
-#    kafkaProcess.start()
+
 
 
 #设置kafka消费者
@@ -39,9 +37,6 @@ def callbackMsg(key,value):
     pool.apply_async(dealwith_event(e=json.loads(value), type=1, key=key), (value,))
 
 
-#事件写入
-def writeMsg(msg):
-    sendCon.send(msg)
 
 
 def initLibEvent():
@@ -101,20 +96,17 @@ def dealwith_endrecord(msg, isdealwith):
 
 
 def dealwith_kafkaMsg(msg, key):
-#    ProcessLock.lock()
     if key == 'pushFlightOrder':
         flightRecordMap[msg['groupName']] = msg
         mes = '亲，您有新的王者专机航班订单，请立刻登机准备起飞！'
         account = msg['captainAccount']
         e = RobotEvent(account=account, msg=mes)
-
         RobotCon.send(e)
     elif key == 'pushFlightStop':
         pass
       #  Robot.writeMsg(sendCon=RobotCon, msg=('航班停班通知:航班%s停班!', msg['flightNo']), account=msg['captainAccount'])
     else:
         pass
- #   ProcessLock.unlock()
 
 
 def writerMsgOnKafka(msg,key):

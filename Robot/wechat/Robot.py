@@ -8,7 +8,7 @@ import event_manager
 from core import Core
 from multiprocessing import Pipe
 cr = Core()
-recCon, sendCon = Pipe()
+recCon, sendCon = Pipe(duplex=True)
 
 def wechatLogin(core):
     cr.auto_login(enableCmdQR=True, hotReload=True)
@@ -53,6 +53,7 @@ def sendMsgToGroup(msg, groupName):
 
 
 def sendMsgToContanct(msg, account):
+    print msg, account
     contact = cr.search_friends(name=account)[0]
     cr.send(msg, toUserName=contact['UserName'])
 
