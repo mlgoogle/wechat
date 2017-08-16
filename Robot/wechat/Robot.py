@@ -15,7 +15,6 @@ def wechatLogin(core):
 @cr.msg_register('Text')
 def receiveMsg(msg):
    # event_manager.sendCon.send(msg)
-    print msg
     pass
 
 @cr.msg_register('Text', isGroupChat=True)
@@ -34,17 +33,10 @@ def sendMsgToGroup(msg, groupName):
 
 
 def sendMsgToContanct(msg, account):
-    print account
-    print cr.memberList
-    if cr.memberList.count() < 1:
-	    cr.get_contact(update=True)
     contact = cr.search_friends(name=account)[0]
-    print contact
     cr.send(msg, toUserName=contact['UserName'])
 
 if __name__ == '__main__':
-    event_manager.sendMsgToGroup = sendMsgToGroup
-    event_manager.sendMsgToContanct = sendMsgToContanct
     event_manager.setConfig()
     wechatLogin(cr)
     # p = Process(target=wechatLogin, args=(cr,))
