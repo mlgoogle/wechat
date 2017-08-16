@@ -12,8 +12,8 @@ def initLibEvent():
 
 def creatEvent(con):
     base = initLibEvent()
-    ev = libevent.Event(base, 1, libevent.EV_READ|libevent.EV_PERSIST, recall, con)
-    ev.add(0.1)
+    ev = libevent.Event(base, con.fileno(), libevent.EV_READ|libevent.EV_PERSIST, recall, con)
+    ev.add(0.01)
     base.loop()
 
 def recall(ev, fd, what, event):
