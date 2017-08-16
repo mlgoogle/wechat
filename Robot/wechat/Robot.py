@@ -66,6 +66,7 @@ if __name__ == '__main__':
     manager.setConfig()
     t = threading.Thread(target=creatEvent,args=(sendCon,))
     t.start()
+    print '线程启动'
     wechatLogin(cr)
 
 
