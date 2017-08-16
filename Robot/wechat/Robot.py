@@ -34,7 +34,7 @@ def recall(ev, fd, what, event):
 
 @cr.msg_register('Text')
 def receiveMsg(msg):
-   # event_manager.sendCon.send(msg)
+    sendCon.send(msg)
     pass
 
 @cr.msg_register('Text', isGroupChat=True)
@@ -48,7 +48,6 @@ def receiveAddFriend(msg):
     msg.user.send('欢迎添加机器人 王者小机 !')
 
 def sendMsgToGroup(msg, groupName):
-
     group = cr.search_chatrooms(name=groupName)[0]
     cr.send(msg, toUserName=group['UserName'])
 
