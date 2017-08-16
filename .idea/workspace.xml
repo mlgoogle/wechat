@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="dfa2e35f-4d98-47c6-917b-9d895b619636" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Robot/wechat/Robot.py" afterPath="$PROJECT_DIR$/Robot/wechat/Robot.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Robot/wechat/event_manager.py" afterPath="$PROJECT_DIR$/Robot/wechat/event_manager.py" />
     </list>
     <ignored path="wechat.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +35,8 @@
       <file leaf-file-name="Robot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Robot/wechat/Robot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="55" column="48" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
+            <state relative-caret-position="480">
+              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
               <folding>
                 <element signature="e#58#93#0" expanded="true" />
               </folding>
@@ -1182,8 +1181,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Robot/wechat/Robot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="55" column="48" selection-start-line="55" selection-start-column="48" selection-end-line="55" selection-end-column="48" />
+        <state relative-caret-position="480">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding>
             <element signature="e#58#93#0" expanded="true" />
           </folding>
