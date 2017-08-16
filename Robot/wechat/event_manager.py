@@ -101,7 +101,7 @@ class event_manager(object):
             }
             self.robotCon.send(e)
         elif key == 'pushFlightStop':
-            mes = '您的航班【 %s 】已停班。' % (msg['flightNo'])
+            mes = '您的航班 %s 已到起飞时间。' % (msg['flightNo'])
             account = msg['captainAccount']
             e = {'msg':mes,
                 'account':account
