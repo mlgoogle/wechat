@@ -11,6 +11,7 @@ from RobotEvent import RobotEvent
 
 send, rec = Pipe()
 RobotCon = send
+print RobotCon
 pool = Pool(processes=5)
 producer = KafkaProducerManager(client=1, host=config.KAFKA_HOST, coname=config.KAFKA_SEND_TOPIC)
 endRecordMap = {'type' : 'endRecord'}
