@@ -45,6 +45,7 @@ class event_manager(object):
     def recall(self, ev, fd, what, event):
         e = event.recv()
         print e
+        print '222'
         self.pool.apply_async(self.dealwith_event(e), (e,))
 
     def dealwith_event(self, e, type=0, key=None):
