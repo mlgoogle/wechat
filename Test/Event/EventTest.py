@@ -19,6 +19,5 @@ def creatEvent(con):
 def recall(ev, fd, what, event):
     e =  event.recv()
     print e
-#	TestChat.sendMsgToGroup(e)
-    if libevent.EV_READ:	
+    if libevent.EV_READ:
 	print ev, fd, what, event
