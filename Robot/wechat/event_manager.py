@@ -8,7 +8,7 @@ from kafka_manage_model import KafkaConsumerManager, KafkaProducerManager
 import jieba
 import json
 from RobotEvent import RobotEvent
-
+import threading
 class event_manager(object):
     def __init__(self, robotCon):
         self.robotCon = robotCon
@@ -20,7 +20,7 @@ class event_manager(object):
 
 
     def setConfig(self):
-        eventProcess = Process(target=self.creatEvent, args=(self.robotCon,))
+        eventProcess = Process(target=self.creatEvent(self.robotCon), args=(self.robotCon,))
         eventProcess.start()
 
     def initLibEvent(self):
