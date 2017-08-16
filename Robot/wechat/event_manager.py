@@ -41,7 +41,7 @@ class event_manager(object):
         print self.robotCon.fileno()
         ev = libevent.Event(base, self.robotCon.fileno(), libevent.EV_READ | libevent.EV_PERSIST, self.recall, self.robotCon)
         ev.add(0.01)
-        # base.loop()
+        base.loop()
 
     def recall(self, ev, fd, what, event):
         print fd
