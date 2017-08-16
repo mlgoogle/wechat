@@ -4,7 +4,7 @@
 from multiprocessing import Process
 import libevent
 from RobotEvent import RobotEvent
-import event_manager
+from event_manager import event_manager
 from core import Core
 from multiprocessing import Pipe
 cr = Core()
@@ -59,8 +59,8 @@ def sendMsgToContanct(msg, account):
 
 
 if __name__ == '__main__':
-    event_manager.setConfig(robotCon=recCon)
-    p = Process(target=creatEvent, args=(sendCon,))
+    manager = event_manager(robotCon=recCon)
+    p = Process(target=creatEvent, args=(recCon,))
     p.start()
     wechatLogin(cr)
 
