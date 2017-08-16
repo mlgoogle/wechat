@@ -8,6 +8,7 @@ import event_manager
 from core import Core
 from multiprocessing import Pipe
 cr = Core()
+print cr
 recCon, sendCon = Pipe(duplex=False)
 
 def wechatLogin(core):
@@ -31,7 +32,9 @@ def creatEvent(con):
 
 def recall(ev, fd, what, event):
     e = event.recv()
-    sendMsgToContanct(e.msg, account=e.account)
+    print e
+    if e:
+        sendMsgToContanct(e.msg, account=e.account)
 
 @cr.msg_register('Text')
 def receiveMsg(msg):
@@ -55,6 +58,7 @@ def sendMsgToGroup(msg, groupName):
 
 
 def sendMsgToContanct(msg, account):
+    print msg
     contact = cr.search_friends(name=account)[0]
     cr.send(msg, toUserName=contact['UserName'])
 
