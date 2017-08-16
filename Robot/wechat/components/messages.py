@@ -257,7 +257,7 @@ def produce_group_chat(core, msg):
     utils.msg_formatter(msg, 'Content')
 
 def send_raw_msg(self, msgType, content, toUserName):
-    print self.loginInfo
+ #   print self.loginInfo
     url = '%s/webwxsendmsg' % self.loginInfo['url']
     data = {
         'BaseRequest': self.loginInfo['BaseRequest'],

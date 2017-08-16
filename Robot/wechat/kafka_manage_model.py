@@ -8,7 +8,7 @@ Created on 2016年7月28日
 from collections import Iterable
 
 from kafka import KafkaConsumer,KafkaProducer
-
+import os
 
 class KafkaProducerManager(object):
 
@@ -56,7 +56,8 @@ class KafkaConsumerManager(object):
         """
         连接取数据
         """
-        while True:
+        print os.getpid()
+	while True:
 	    print 'read connect', self.host, self.coname
             consumer =  KafkaConsumer(bootstrap_servers=self.host)
             consumer.subscribe([self.coname])

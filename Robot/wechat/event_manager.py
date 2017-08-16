@@ -9,22 +9,24 @@ import jieba
 import json
 from RobotEvent import RobotEvent
 import threading
+import pdb
+import os
 class event_manager(object):
     def __init__(self, robotCon):
         self.robotCon = robotCon
         print robotCon
-        self.producer = KafkaProducerManager(client=1, host=config.KAFKA_HOST, coname=config.KAFKA_SEND_TOPIC)
+    #    pdb.set_trace()
+	self.producer = KafkaProducerManager(client=1, host=config.KAFKA_HOST, coname=config.KAFKA_SEND_TOPIC)
         self.pool = Pool(processes=5)
         self.endRecordMap = {'type' : 'endRecord'}
         self.flightRecordMap = {'type' : 'flightRecord'}
 
 
     def setConfig(self):
+	print os.getpid()
         t = threading.Thread(target=self.creatEvent)
         t.start()
-      #  p = Process(target=self.creatEvent())
-      #  p.start()
-        kafkaProcess = Process(target=self.setkafka())
+        kafkaProcess = Process(target=self.setkafka)
         kafkaProcess.start()
 
 
@@ -37,6 +39,7 @@ class event_manager(object):
         consumer.run()
 
     def callbackMsg(self,key, value):
+	print os.getpid()
         self.pool.apply_async(self.dealwith_event(e=json.loads(value), type=1, key=key), (value,))
 
     def creatEvent(self):
@@ -57,24 +60,24 @@ class event_manager(object):
 
     def dealwith_wechatMsg(self, msg):
         msgText = msg['Text']
-        nickName = msg['NickName']
+        nickName = msg['User']['NickName']
         if msgText.find(config.EVALUTE_IDENTIFIER) > -1:
             word_list = jieba.lcut(msgText)
-            resultList = None
+            resultList = []
             for text in word_list:
                 if text.isdigit():
                     resultList.append(text)
             if resultList.count > 1:
-                rate = resultList[0] / resultList[1]
-                print 'find flight end', nickName
-                if self.flightRecordMap[nickName]:
+                rate = float(resultList[0]) /(float(resultList[1]) + float(resultList[0]))
+               	print 'find flight end', rate
+                if self.flightRecordMap.has_key(nickName):
                     flightInfo = self.flightRecordMap[nickName]
                     parametersMsg = {'flightNum': flightInfo['flightNum'],
                                      'flightNo': flightInfo['flightNo'],
                                      'victoryRate': str(rate)}
                     self.writerMsgOnKafka(json.dumps(parametersMsg), key='pushFlightComplete')
         elif msgText.find(config.EVALUTE_IDENTIFIER):
-            if self.endRecordMap[nickName] != True:
+            if self.endRecordMap.has_key(nickName):
                 self.dealwith_endrecord(msg, True)
         else:
             if msgText > 64 & msgText < 69:
@@ -84,7 +87,8 @@ class event_manager(object):
             pass
 
     def dealwith_endrecord(self, msg, isdealwith):
-        self.endRecordMap[msg['NickName']] = isdealwith
+        if self.endRecordMap.has_key('NickName'):
+  	    self.endRecordMap[msg['NickName']] = isdealwith
 
     def dealwith_kafkaMsg(self, msg, key):
         if key == 'pushFlightOrder':
