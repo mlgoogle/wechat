@@ -8,11 +8,11 @@ from event_manager import event_manager
 from core import Core
 from multiprocessing import Pipe
 cr = Core()
-recCon, sendCon = Pipe(duplex=True)
+recCon, sendCon = Pipe()
 
 def wechatLogin(core):
-    cr.auto_login(enableCmdQR=True, hotReload=True)
-    cr.run()
+    core.auto_login(enableCmdQR=True, hotReload=True)
+    core.run()
 
 
 def initLibEvent():
@@ -20,7 +20,7 @@ def initLibEvent():
 
 def creatEvent(con):
     base = initLibEvent()
-    ev = libevent.Event(base, 2, libevent.EV_READ|libevent.EV_PERSIST, recall, recCon)
+    ev = libevent.Event(base, 1, libevent.EV_READ|libevent.EV_PERSIST, recall, con)
     ev.add(0.01)
     print 'ssss'
     base.loop()
@@ -61,7 +61,7 @@ def sendMsgToContanct(msg, account):
 if __name__ == '__main__':
     manager = event_manager(robotCon=recCon)
     manager.setConfig()
-    p = Process(target=creatEvent, args=(recCon,))
+    p = Process(target=creatEvent, args=(sendCon,))
     p.start()
     wechatLogin(cr)
 
