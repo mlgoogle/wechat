@@ -18,14 +18,13 @@ def receiveMsg(msg):
 
 @cr.msg_register('Text', isGroupChat=True)
 def receiveGrope(msg):
-    event_manager.sendCon.send(msg.deepcopy())
+    event_manager.sendCon.send(msg)
     pass
 
 @cr.msg_register('Friends')
 def receiveAddFriend(msg):
-    cr.add_friend(**msg['Text'])
-    cr.get_contract()
-    cr.send_msg('欢迎添加机器人 王者小机 !', msg['RecommendInfo']['UserName'])
+    msg.user.verify()
+    msg.user.send('欢迎添加机器人 王者小机 !')
 
 def sendMsgToGroup(msg, groupName):
     group = cr.search_chatrooms(name=groupName)[0]
@@ -33,6 +32,7 @@ def sendMsgToGroup(msg, groupName):
 
 
 def sendMsgToContanct(msg, account):
+    print cr.search_friends()
     contact = cr.search_friends(name=account)[0]
     cr.send(msg, toUserName=contact['UserName'])
 
