@@ -60,6 +60,7 @@ def sendMsgToContanct(msg, account):
 
 if __name__ == '__main__':
     manager = event_manager(robotCon=recCon)
+    manager.setConfig()
     p = Process(target=creatEvent, args=(recCon,))
     p.start()
     wechatLogin(cr)
