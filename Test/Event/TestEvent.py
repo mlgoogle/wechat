@@ -1,7 +1,6 @@
 
 
 
-from kafka.kafka_manage_model import KafkaConsumerManager
 from multiprocessing import Process, Pipe
 import EventTest
 
@@ -16,6 +15,7 @@ p = Process(target=initServer, args=(recCon,))
 p.start()
 
 sendCon.send('11')
+print 'send 1'
 sendCon.send('22')
 sendCon.send('33')
 sendCon.send('44')
