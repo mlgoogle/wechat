@@ -20,7 +20,7 @@ class event_manager(object):
 
 
     def setConfig(self):
-        t = threading.Thread(target=self.creatEvent())
+        t = threading.Thread(target=self.creatEvent)
         t.start()
       #  p = Process(target=self.creatEvent())
       #  p.start()

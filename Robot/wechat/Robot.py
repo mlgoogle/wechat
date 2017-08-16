@@ -25,9 +25,9 @@ def wechatLogin(core):
 def initLibEvent():
    return libevent.Base()
 
-def creatEvent(con):
+def creatEvent():
     base = initLibEvent()
-    ev = libevent.Event(base, con.fileno(), libevent.EV_READ|libevent.EV_PERSIST, recall, con)
+    ev = libevent.Event(base, sendCon.fileno(), libevent.EV_READ|libevent.EV_PERSIST, recall, sendCon)
     ev.add(0.01)
     base.loop()
 
@@ -64,7 +64,7 @@ def sendMsgToContanct(msg, account):
 if __name__ == '__main__':
     manager = event_manager(robotCon=recCon)
     manager.setConfig()
-    t = threading.Thread(target=creatEvent,args=(sendCon,))
+    t = threading.Thread(target=creatEvent)
     t.start()
     wechatLogin(cr)
 
