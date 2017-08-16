@@ -22,6 +22,7 @@ def creatEvent(con):
     base = initLibEvent()
     ev = libevent.Event(base, 2, libevent.EV_READ|libevent.EV_PERSIST, recall, recCon)
     ev.add(0.01)
+    print 'ssss'
     base.loop()
 
 def recall(ev, fd, what, event):
