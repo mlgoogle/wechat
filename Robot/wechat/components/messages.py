@@ -276,7 +276,7 @@ def send_raw_msg(self, msgType, content, toUserName):
     return ReturnValue(rawResponse=r)
 
 def send_msg(self, msg='Test Message', toUserName=None):
-    logger.debug('Request to send a text message to %s: %s' % (toUserName, msg))
+    # logger.debug('Request to send a text message to %s: %s' % (toUserName, msg))
     r = self.send_raw_msg(1, msg, toUserName)
     return r
 
