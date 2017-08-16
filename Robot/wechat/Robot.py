@@ -8,7 +8,7 @@ from core import Core
 cr = Core()
 
 def wechatLogin(cr):
-    cr.auto_login(enableCmdQR=True)
+    cr.auto_login(enableCmdQR=True, hotReload=True)
     cr.run()
 
 @cr.msg_register('Text')
@@ -33,7 +33,9 @@ def sendMsgToGroup(msg, groupName):
 
 
 def sendMsgToContanct(msg, account):
+    print account
     contact = cr.search_friends(name=account)[0]
+    print contact
     cr.send(msg, toUserName=contact['UserName'])
 
 if __name__ == '__main__':
