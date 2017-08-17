@@ -1,43 +1,4 @@
 
-connect write 
-Getting uuid of QR code.
-Downloading QR code.
-https://login.weixin.qq.com/l/gZVqNrai3Q==
-Please scan the QR code to log in.
 <read-write Connection, handle 8>
-connect write 
-3722
-<read-write Connection, handle 8>
-connect write 
-3748
-Getting uuid of QR code.
-Downloading QR code.
-https://login.weixin.qq.com/l/AYXe9wE0qg==
-Please scan the QR code to log in.
-Please press confirm on your phone.
-Loading the contact, this may take a little while.
-[3;J[H[2JLogin successfully as 王者小机
-Start auto replying.
-Building prefix dict from the default dictionary ...
-Loading model from cache /tmp/jieba.cache
-Loading model cost 0.272 seconds.
-Prefix dict has been built succesfully.
-Exception in thread Thread-6:
-Traceback (most recent call last):
-  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
-    self.run()
-  File "/usr/lib/python2.7/threading.py", line 754, in run
-    self.__target(*self.__args, **self.__kwargs)
-  File "Robot.py", line 32, in creatEvent
-    base.loop()
-  File "Robot.py", line 37, in recall
-    sendMsgToContanct(e['msg'], account=e['account'])
-  File "Robot.py", line 60, in sendMsgToContanct
-    contact = cr.search_friends(name=account)[0]
-IndexError: list index out of range
-
-LOG OUT!
-<read-write Connection, handle 8>
-connect write 
-4032
+4350
 Start auto replying.

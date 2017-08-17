@@ -52,13 +52,15 @@ def receiveAddFriend(msg):
     msg.user.send('欢迎添加机器人 王者小机 !')
 
 def sendMsgToGroup(msg, groupName):
-    group = cr.search_chatrooms(name=groupName)[0]
-    cr.send(msg, toUserName=group['UserName'])
+    group = cr.search_chatrooms(name=groupName)
+    if group:
+	cr.send(msg, toUserName=group['UserName'])
 
 
 def sendMsgToContanct(msg, account):
-    contact = cr.search_friends(name=account)[0]
-    cr.send(msg, toUserName=contact['UserName'])
+    contact = cr.search_friends(name=account)
+    if contact:
+	cr.send(msg, toUserName=contact[0]['UserName'])
 
 
 if __name__ == '__main__':
